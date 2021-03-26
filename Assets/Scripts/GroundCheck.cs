@@ -1,0 +1,32 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GroundCheck : MonoBehaviour
+{
+    public PlayerController player;
+
+    void Start ()
+    {
+        player = gameObject.GetComponentInParent<PlayerController>();
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.isTrigger == false)
+            player.grounded = true;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.isTrigger == false )
+        {
+            player.grounded = true;
+        }
+        
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.isTrigger == false)
+            player.grounded = false;
+    }
+}
